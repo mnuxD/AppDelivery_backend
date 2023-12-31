@@ -18,15 +18,15 @@ module.exports = (app, upload) => {
     passport.authenticate("jwt", { session: false }),
     productsController.delete
   );
-  // app.put(
-  //   "/api/products/updateWithImage",
-  //   passport.authenticate("jwt", { session: false }),
-  //   upload.array("image", 1),
-  //   productsController.updateWithImage
-  // );
-  // app.put(
-  //   "/api/products/update",
-  //   passport.authenticate("jwt", { session: false }),
-  //   productsController.update
-  // );
+  app.put(
+    "/api/products/updateWithImage",
+    passport.authenticate("jwt", { session: false }),
+    upload.array("image", 3),
+    productsController.updateWithImage
+  );
+  app.put(
+    "/api/products/update",
+    passport.authenticate("jwt", { session: false }),
+    productsController.update
+  );
 };
