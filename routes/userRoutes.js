@@ -7,6 +7,11 @@ module.exports = (app, upload) => {
   // PUT => ACTUALIZAR DATOS
   // DELETE => ELIMINIAR DATOS
   app.post("/api/users/create", usersController.register);
+  app.get(
+    "/api/users/findDelivery",
+    passport.authenticate("jwt", { session: false }),
+    usersController.findDelivery
+  );
   app.post(
     "/api/users/createWithImage",
     upload.array("image", 1),

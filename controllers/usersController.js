@@ -6,6 +6,19 @@ const keys = require("../config/keys");
 const storage = require("../utils/cloud_storage");
 
 module.exports = {
+  findDelivery(req, res) {
+    User.findDelivery((err, data) => {
+      if (err) {
+        return res.status(501).json({
+          success: false,
+          message: "Hubo un error al encontrar los deliverys",
+          error: err
+        });
+      }
+      return res.status(201).json(data);
+    });
+  },
+
   login(req, res) {
     const email = req.body.email;
     const password = req.body.password;
