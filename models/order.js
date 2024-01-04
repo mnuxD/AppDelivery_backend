@@ -225,4 +225,56 @@ Order.updateToDispatched = (id_order, id_delivery, result) => {
   );
 };
 
+Order.updateToOnTheWay = (id_order, id_delivery, result) => {
+  const sql = `
+    UPDATE
+      orders
+    SET
+      id_delivery = ?,
+      status = ?,
+      updated_at = ?
+    WHERE
+      id = ?
+  `;
+
+  db.query(
+    sql,
+    [id_delivery, "EN CAMINO", new Date(), id_order],
+    (err, res) => {
+      if (err) {
+        console.log("Error: ", err);
+        result(err, null);
+      } else {
+        result(null, id_order);
+      }
+    }
+  );
+};
+
+Order.updateToDelivered = (id_order, id_delivery, result) => {
+  const sql = `
+    UPDATE
+      orders
+    SET
+      id_delivery = ?,
+      status = ?,
+      updated_at = ?
+    WHERE
+      id = ?
+  `;
+
+  db.query(
+    sql,
+    [id_delivery, "ENTREGADO", new Date(), id_order],
+    (err, res) => {
+      if (err) {
+        console.log("Error: ", err);
+        result(err, null);
+      } else {
+        result(null, id_order);
+      }
+    }
+  );
+};
+
 module.exports = Order;

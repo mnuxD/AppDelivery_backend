@@ -22,4 +22,14 @@ module.exports = (app) => {
     passport.authenticate("jwt", { session: false }),
     ordersController.updateToDispatched
   );
+  app.put(
+    "/api/orders/updateToOnTheWay",
+    passport.authenticate("jwt", { session: false }),
+    ordersController.updateToOnTheWay
+  );
+  app.put(
+    "/api/orders/updateToDelivered",
+    passport.authenticate("jwt", { session: false }),
+    ordersController.updateToDelivered
+  );
 };

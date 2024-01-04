@@ -103,5 +103,41 @@ module.exports = {
         data: `${id_order}`
       });
     });
+  },
+
+  updateToOnTheWay(req, res) {
+    const order = req.body;
+    Order.updateToOnTheWay(order.id, order.id_delivery, (err, id_order) => {
+      if (err) {
+        return res.status(501).json({
+          success: false,
+          message: "Hubo un error al actualizar la orden",
+          error: err
+        });
+      }
+      return res.status(201).json({
+        success: true,
+        message: "La orden se actualizó correctamente",
+        data: `${id_order}`
+      });
+    });
+  },
+
+  updateToDelivered(req, res) {
+    const order = req.body;
+    Order.updateToDelivered(order.id, order.id_delivery, (err, id_order) => {
+      if (err) {
+        return res.status(501).json({
+          success: false,
+          message: "Hubo un error al actualizar la orden",
+          error: err
+        });
+      }
+      return res.status(201).json({
+        success: true,
+        message: "La orden se actualizó correctamente",
+        data: `${id_order}`
+      });
+    });
   }
 };
