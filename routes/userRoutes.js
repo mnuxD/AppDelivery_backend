@@ -29,4 +29,9 @@ module.exports = (app, upload) => {
     passport.authenticate("jwt", { session: false }),
     usersController.updateWithoutImage
   );
+  app.put(
+    "/api/users/updateNotificationToken",
+    passport.authenticate("jwt", { session: false }),
+    usersController.updateNotificationToken
+  );
 };

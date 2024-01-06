@@ -52,7 +52,7 @@ productsRoutes(app, upload);
 addressRoutes(app);
 orderRoutes(app);
 
-server.listen(3000, "192.168.0.6" || "localhost", function () {
+server.listen(3000, "192.168.0.7" || "localhost", function () {
   console.log("Aplicación de NodeJS " + process.pid + " iniciada...");
 });
 

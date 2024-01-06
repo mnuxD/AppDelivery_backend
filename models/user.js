@@ -226,4 +226,26 @@ User.updateWithoutImage = async (user, result) => {
   );
 };
 
+User.updateNotificatioNToken = (id, toke, result) => {
+  const sql = `
+    UPDATE
+      users
+    SET
+      notification_token = ?,
+      updated_at = ?
+    WHERE 
+      id = ?
+  `;
+
+  db.query(sql, [token, new Date(), id], (err, res) => {
+    if (err) {
+      console.log("Error: ", err);
+      result(err, null);
+    } else {
+      console.log("Usuario actualizado: ", id);
+      result(null, id);
+    }
+  });
+};
+
 module.exports = User;
