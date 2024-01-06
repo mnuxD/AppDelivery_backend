@@ -56,7 +56,8 @@ User.findDelivery = (result) => {
       U.name,
       U.phone,
       U.lastname,
-      U.image
+      U.image,
+      U.notification_token
     FROM 
       users AS U
     INNER JOIN
@@ -226,7 +227,7 @@ User.updateWithoutImage = async (user, result) => {
   );
 };
 
-User.updateNotificatioNToken = (id, toke, result) => {
+User.updateNotificatioNToken = (id, token, result) => {
   const sql = `
     UPDATE
       users
